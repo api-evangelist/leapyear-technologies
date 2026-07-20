@@ -1,0 +1,63 @@
+generated: '2026-07-19'
+method: searched
+source: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/tutorial.html
+docs: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/tutorial.html
+notes: >-
+  LeapYear Core was licensed, self-hosted enterprise software, not a public
+  multi-tenant API — there is no public authorization server, no OAuth surface,
+  and no signup. Authentication is against the customer's own LeapYear server
+  instance via the `leapyear` Python client. Captured from the published 4.1.1
+  documentation, which remains live after the Snowflake acquisition.
+deployment: self-hosted
+oauth2: false
+openid_connect: false
+api_keys: false
+schemes:
+  - id: client-credentials
+    type: http
+    scheme: basic-equivalent
+    description: >-
+      Username and password passed directly to the client constructor, which
+      establishes an authenticated session against a customer-operated server.
+    client: leapyear.Client
+    signature: Client(url, username, password)
+    parameters:
+      - name: url
+        description: >-
+          LeapYear Core server endpoint, e.g. 'http://localhost:4401'. Port is
+          commonly supplied via the LY_PORT environment variable.
+      - name: username
+        description: User account identifier.
+      - name: password
+        description: User account password.
+    session:
+      token_based: true
+      evidence: >-
+        leapyear.exceptions.TokenExpiredError ("Authentication token was
+        expired") indicates the client holds a server-issued session token
+        after the initial credential exchange.
+      connection_check: client.connected
+      context_manager: 'with Client(url, username, password) as client:'
+  - id: public-key
+    type: publicKey
+    description: >-
+      Public key authentication credentials are supported; referenced by the
+      PublicKeyCredentialsError exception class in leapyear.exceptions.
+    evidence: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/api/exceptions.html
+    detail: >-
+      The published reference confirms the credential type exists but does not
+      document the enrollment or key-format procedure publicly.
+transport_security:
+  tls: supported
+  evidence: leapyear.exceptions.TLSError ("Errors from TLS.")
+environment_variables:
+  - name: LY_PORT
+    description: Server port used to construct the client URL; documented default 4401.
+authorization_model:
+  scopes: false
+  description: >-
+    Authorization is grant-based rather than scope-based, administered
+    server-side through the leapyear.admin.grants module over Database, Table,
+    View and User objects — plus a per-user differential-privacy exposure
+    budget that acts as a second, quantitative authorization limit.
+  reference: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/api/admin_grants.html
