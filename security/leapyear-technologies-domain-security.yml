@@ -1,0 +1,54 @@
+generated: '2026-07-19'
+method: probed
+source: 0-working/probe-domain-security.py
+probed: '2026-07-19'
+domain: leapyear.io
+result: unreachable
+notes: >-
+  The probe returned `unreachable` for leapyear.io. HTTPS does not complete a
+  connection (timeout on port 443); only plain HTTP answers, and it serves
+  Snowflake's LeapYear acquisition announcement for every path. The domain is
+  no longer operated as a LeapYear property — it resolves to 3.33.139.32 and is
+  served from MarkMonitor nameservers under Snowflake's control following the
+  February 2023 acquisition. The findings below therefore describe a parked,
+  post-acquisition redirect target, NOT a live LeapYear API edge.
+findings:
+  tls:
+    available: false
+    detail: HTTPS connection to leapyear.io times out.
+  hsts:
+    present: false
+    detail: Not assessable — no HTTPS response.
+  dnssec:
+    checked: true
+    present: false
+  caa:
+    checked: true
+    records: []
+  spf:
+    checked: true
+    records: []
+    detail: No TXT records returned for leapyear.io.
+  dmarc:
+    checked: true
+    records: []
+  mx:
+    checked: true
+    records: []
+    detail: No mail exchangers — the domain no longer receives mail.
+dns:
+  a:
+    - 3.33.139.32
+  nameservers:
+    - ns1.markmonitor.com
+    - ns2.markmonitor.com
+    - ns3.markmonitor.com
+    - ns4.markmonitor.com
+    - ns5.markmonitor.com
+    - ns6.markmonitor.com
+    - ns7.markmonitor.com
+  wildcard: true
+  wildcard_evidence: >-
+    A control request to /this-path-does-not-exist-xyz123 returned 200
+    text/html, identical to /.well-known/security.txt and every other probed
+    path. No /.well-known/ document on this host is genuine.

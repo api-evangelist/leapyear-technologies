@@ -1,0 +1,82 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.snowflake.com/en/blog/snowflake-to-acquire-leapyear/
+notes: >-
+  LeapYear Technologies no longer operates as an independent company. This
+  lifecycle record documents an END-OF-LIFE provider: the product was absorbed
+  into Snowflake and the public developer surface has been taken down.
+status: discontinued
+company_status:
+  state: acquired
+  acquirer: Snowflake Inc.
+  announced: '2023-02-07'
+  closed: '2023-02-10'
+  consideration: USD 62.0 million in cash
+  rationale: >-
+    Acquired primarily for talent and developed technology, to add differential
+    privacy protection to Snowflake's Global Data Clean Room offering.
+  sources:
+    - https://www.snowflake.com/en/blog/snowflake-to-acquire-leapyear/
+    - https://www.sec.gov/Archives/edgar/data/1640147/000164014723000199/snow-20230731.htm
+    - https://www.fenwick.com/insights/experience/fenwick-represents-leapyear-in-acquisition-by-snowflake
+surface_status:
+  probed: '2026-07-19'
+  findings:
+    - host: https://leapyear.io/
+      status: 0
+      detail: >-
+        HTTPS does not respond (connection timeout). Plain HTTP returns 200 but
+        serves Snowflake's acquisition announcement with a canonical link to
+        snowflake.com — the domain is now Snowflake-controlled (MarkMonitor
+        nameservers) and answers every path, including /.well-known/*, with the
+        same HTML. Any 200 on this host is a wildcard catch-all, not a real
+        document.
+    - host: https://docs.leapyear.io/
+      status: 0
+      detail: Former documentation host; no longer resolves to a live service.
+    - host: https://guides.leapyear.io/
+      status: 0
+      detail: Former guides portal; no longer resolves to a live service.
+    - host: https://leapyear-python-docs.readthedocs-hosted.com/
+      status: 200
+      detail: >-
+        The Python client API reference survives on the readthedocs-hosted
+        domain and is the only live first-party documentation left. It is the
+        source for this repo's authentication, errors and conventions
+        artifacts.
+versioning:
+  style: coupled client/server version
+  description: >-
+    Client and LeapYear Core server versions had to match exactly; a mismatch
+    raised ServerVersionMismatch. No URL-path or header API version selector,
+    and no documented version-support window.
+  enforcement_error: ServerVersionMismatch
+versions:
+  - version: 4.1.1
+    docs: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/
+    status: 200
+    final: true
+  - version: 4.1.0
+    docs: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.0/
+    status: 200
+  - version: 3.2.0
+    docs: https://leapyear-python-docs.readthedocs-hosted.com/en/3.2.0/
+    status: 404
+    detail: Indexed historically; the build is no longer served.
+last_package_activity: '2022-05-07'
+last_package_activity_detail: >-
+  All three first-party npm packages were last published 2022-05-07, roughly
+  nine months before the acquisition closed.
+deprecation_policy:
+  published: false
+  detail: >-
+    No deprecation policy, no Sunset/Deprecation (RFC 8594) header usage, and no
+    end-of-life notice were ever published on a surface that survives. The
+    product simply ceased to be sold after the acquisition.
+status_page:
+  published: false
+  detail: >-
+    No status page found. status.leapyear.io resolves only to the wildcard
+    catch-all described above.
+sla:
+  published: false

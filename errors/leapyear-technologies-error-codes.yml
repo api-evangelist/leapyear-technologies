@@ -1,0 +1,90 @@
+generated: '2026-07-19'
+method: searched
+source: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/api/exceptions.html
+docs: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/api/exceptions.html
+format: python-exceptions
+envelope:
+  type: exception
+  module: leapyear.exceptions
+  detail_carrier: ErrorInfo
+  detail_fields:
+    - message
+    - details
+notes: >-
+  LeapYear exposed no public REST surface with RFC 9457 problem+json. Its error
+  contract was the exception hierarchy raised by the `leapyear` Python client
+  against LeapYear Core. Captured verbatim from the published 4.1.1 API
+  reference, which remains live on the readthedocs host after the Snowflake
+  acquisition. A notable domain-specific class of errors covers DIFFERENTIAL
+  PRIVACY BUDGET enforcement — computations are interrupted when they would
+  exceed the allowed privacy exposure.
+error_classes:
+  - name: ClientError
+    category: client
+    description: General client errors.
+  - name: ErrorInfo
+    category: envelope
+    description: Data structure holding error details, with message and optional details fields.
+  - name: APIError
+    category: server
+    description: Error from the API Server.
+  - name: DataSetTooSmallException
+    category: privacy
+    description: >-
+      Dataset is too small to guarantee accuracy while maintaining privacy
+      exposure limits.
+  - name: DataSetSizeBlockedByPrivacyProfileException
+    category: privacy
+    description: Dataset size is below the minimum required by the privacy profile.
+  - name: HighPrivacyExposureException
+    category: privacy
+    description: >-
+      Privacy exposure will reach or exceed the limit, potentially due to small
+      data samples or large sensitivity multipliers.
+  - name: SensitivityMultiplierTooLargeException
+    category: privacy
+    description: >-
+      Interrupts a computation when the LeapYear system estimates it will reach
+      or exceed the maximum Privacy Exposure allowed.
+  - name: InvalidURL
+    category: connection
+    description: URL can not be parsed.
+  - name: TLSError
+    category: connection
+    description: Errors from TLS.
+  - name: InvalidJson
+    category: protocol
+    description: Json was not constructed correctly.
+  - name: ConnectionError
+    category: connection
+    description: Error establishing connection.
+  - name: ServerVersionMismatch
+    category: lifecycle
+    description: Server and client have different versions.
+  - name: TokenExpiredError
+    category: auth
+    description: Authentication token was expired.
+  - name: PublicKeyCredentialsError
+    category: auth
+    description: Exceptions arising from public key authentication credential issues.
+  - name: AsyncTimeoutError
+    category: jobs
+    description: Async job timed out.
+  - name: AsyncCancelledError
+    category: jobs
+    description: Async job was cancelled.
+  - name: GroupbyAggTooManyKeysError
+    category: query
+    description: Too many keys for a GroupbyAgg operation.
+  - name: LoadUnsupportedModelException
+    category: model
+    description: Attempted to load an unsupported model type.
+  - name: SaveUnsupportedModelException
+    category: model
+    description: Attempted to save an unsupported model type.
+  - name: LoadModelMismatchException
+    category: model
+    description: Loaded and expected models do not match.
+  - name: LoadModelVersionException
+    category: model
+    description: Attempted to load a module with an unsupported version.

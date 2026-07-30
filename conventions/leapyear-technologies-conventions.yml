@@ -1,0 +1,86 @@
+generated: '2026-07-19'
+method: searched
+source: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/
+notes: >-
+  Cross-cutting runtime semantics for LeapYear Core, derived from the published
+  Python client reference (v4.1.1) and the first-party npm GraphQL packages.
+  This is a self-hosted, client-library-mediated platform rather than a public
+  HTTP API, so several conventions common to SaaS APIs (idempotency keys,
+  request-id tracing headers, rate-limit headers, pagination params) are simply
+  NOT PART OF the published contract. Absence is recorded honestly below rather
+  than inferred.
+access_style:
+  primary: python-client
+  client: leapyear.Client
+  reference: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/api/leapyear.html
+  secondary: graphql
+  graphql_evidence: >-
+    First-party npm packages leapyear-graphql-api (0.0.28) and
+    leapyear-graphql-client (0.0.5), authored by LeapYear Technologies, Inc.,
+    indicate a GraphQL API layer behind the product UI. No public GraphQL
+    schema or endpoint was published.
+authentication:
+  style: username/password to a customer-operated server, token-backed session
+  see: authentication/leapyear-technologies-authentication.yml
+idempotency:
+  supported: false
+  evidence: >-
+    No idempotency key, retry-safety header, or replay-window semantics appear
+    anywhere in the published 4.1.1 reference.
+pagination:
+  supported: false
+  evidence: >-
+    No pagination parameters or cursor/response-envelope fields are documented.
+    Result sizing is instead governed by differential-privacy constraints
+    (see privacy_budget) and by GroupbyAggTooManyKeysError, which caps the key
+    cardinality of a GroupbyAgg operation.
+rate_limiting:
+  supported: false
+  evidence: >-
+    No rate-limit headers or quota signaling documented. The functional
+    equivalent is the privacy exposure budget, which is a correctness and
+    confidentiality limit rather than a throughput limit.
+privacy_budget:
+  description: >-
+    LeapYear's defining runtime semantic. Every computation draws down a
+    quantified privacy exposure budget; the server interrupts computations that
+    would reach or exceed the configured limit, and refuses computations over
+    datasets too small to answer within the privacy profile.
+  enforcement_errors:
+    - HighPrivacyExposureException
+    - SensitivityMultiplierTooLargeException
+    - DataSetTooSmallException
+    - DataSetSizeBlockedByPrivacyProfileException
+  see: errors/leapyear-technologies-error-codes.yml
+asynchrony:
+  supported: true
+  module: leapyear.jobs
+  description: Long-running analyses execute as asynchronous jobs.
+  errors:
+    - AsyncTimeoutError
+    - AsyncCancelledError
+  reference: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/api/async.html
+versioning:
+  style: coupled client/server version
+  description: >-
+    The client and the LeapYear Core server must run matching versions; a
+    mismatch is a hard error rather than a negotiated downgrade. There is no
+    URL or header API version selector.
+  enforcement_error: ServerVersionMismatch
+  see: lifecycle/leapyear-technologies-lifecycle.yml
+error_envelope:
+  style: python-exception
+  detail_carrier: leapyear.exceptions.ErrorInfo
+  fields:
+    - message
+    - details
+  see: errors/leapyear-technologies-error-codes.yml
+authorization:
+  style: grants
+  module: leapyear.admin.grants
+  objects:
+    - Database
+    - Table
+    - View
+    - User
+  scopes: false

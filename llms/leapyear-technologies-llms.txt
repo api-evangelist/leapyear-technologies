@@ -1,0 +1,55 @@
+# LeapYear Technologies
+
+> LeapYear Technologies built an enterprise platform for differentially private analytics and machine learning, letting organizations compute over sensitive data — and share it across silos and partners — with mathematically proven privacy guarantees. The company was acquired by Snowflake in February 2023 and no longer operates independently.
+
+IMPORTANT STATUS: This provider is DISCONTINUED. Snowflake announced its intent to
+acquire LeapYear on 2023-02-07 and closed the acquisition on 2023-02-10 for
+USD 62.0 million in cash, primarily for talent and developed technology. The
+technology was folded into Snowflake's Global Data Clean Room offering. Do not
+attempt to sign up for, purchase, or integrate with LeapYear — there is no live
+product, no public API endpoint, and no support channel. The former marketing
+domain (leapyear.io) is now controlled by Snowflake and serves the acquisition
+announcement for every path.
+
+## What it was
+
+LeapYear Core was licensed, self-hosted enterprise software — not a public
+multi-tenant API. Customers ran their own server; analysts and data scientists
+reached it through a first-party Python client. Every computation drew down a
+quantified differential-privacy exposure budget, and the server refused or
+interrupted computations that would exceed the configured limit or that ran
+against datasets too small to answer privately.
+
+## Surviving documentation
+
+- [Python client API reference (v4.1.1)](https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/): the only live first-party documentation. Modules: leapyear, leapyear.admin, leapyear.admin.grants, leapyear.jobs, leapyear.dataset, leapyear.functions, leapyear.feature, leapyear.analytics, leapyear.model, leapyear.exceptions, leapyear.ext.
+- [Getting started / connecting](https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/tutorial.html): `Client(url, username, password)` against a customer-operated server.
+- [Exception reference](https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/api/exceptions.html): the platform's error contract.
+
+## Acquisition record
+
+- [Snowflake announcement](https://www.snowflake.com/en/blog/snowflake-to-acquire-leapyear/)
+- [Snowflake 10-Q disclosing the $62.0M purchase](https://www.sec.gov/Archives/edgar/data/1640147/000164014723000199/snow-20230731.htm)
+- [Fenwick deal record](https://www.fenwick.com/insights/experience/fenwick-represents-leapyear-in-acquisition-by-snowflake)
+
+## Artifacts in this API Evangelist repo
+
+- [Packages](packages/leapyear-technologies-packages.yml): three first-party npm packages (leapyear-graphql-api, leapyear-graphql-client, leapyear-ui-kit), all last published 2022-05-07 and unmaintained; the Python client was never on PyPI.
+- [Authentication](authentication/leapyear-technologies-authentication.yml): username/password to a self-hosted server, token-backed session, public-key credentials, TLS. No OAuth, no OIDC, no API keys, no scopes.
+- [Error codes](errors/leapyear-technologies-error-codes.yml): 21 documented exception classes, including the differential-privacy budget enforcement family.
+- [Conventions](conventions/leapyear-technologies-conventions.yml): access style, async jobs, coupled client/server versioning, grant-based authorization. No idempotency, pagination, or rate-limit semantics were ever published.
+- [Lifecycle](lifecycle/leapyear-technologies-lifecycle.yml): end-of-life record and per-host probe results.
+- [Domain security](security/leapyear-technologies-domain-security.yml): probe of the now-parked leapyear.io domain.
+
+## Not available
+
+No OpenAPI, AsyncAPI, GraphQL schema, MCP server, agent skills, CLI, sandbox,
+status page, changelog, roadmap, pricing, signup, support channel, trust center,
+vulnerability disclosure program, or /.well-known/ discovery documents. These
+were either never published or went down with the company. Nothing in this repo
+fabricates them.
+
+## Successor
+
+For the capability rather than the company, see Snowflake's differential privacy
+and data clean room features, which incorporate LeapYear's technology.
