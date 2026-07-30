@@ -1,8 +1,33 @@
 aid: leapyear-technologies
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/leapyear-technologies.png
 name: LeapYear Technologies
-description: 'LeapYear Technologies is a company surfaced as a portfolio company of bain-capital-ventures
-  and added to the API Evangelist network as a stub for enrichment. Sector: ai-infrastructure. This profile
-  is a lead awaiting the enrichment pipeline.'
+description: >-
+  LeapYear Technologies built an enterprise platform for differentially private
+  analytics and machine learning, letting organizations compute over highly
+  sensitive data and share it across internal silos and external partners with
+  mathematically proven privacy guarantees. LeapYear Core was licensed,
+  self-hosted software rather than a public multi-tenant API: customers ran
+  their own server and reached it through a first-party Python client, with
+  every computation drawing down a quantified privacy exposure budget enforced
+  by the server. Snowflake announced its intent to acquire LeapYear on
+  2023-02-07 and closed on 2023-02-10 for USD 62.0 million in cash, primarily
+  for talent and developed technology, folding the differential privacy
+  capability into its Global Data Clean Room offering. The company no longer
+  operates independently, leapyear.io is now a Snowflake-controlled redirect,
+  and the only surviving first-party documentation is the Python client API
+  reference on its readthedocs host.
 url: https://raw.githubusercontent.com/api-evangelist/leapyear-technologies/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,12 +35,22 @@ x-backed-by:
 - bain-capital-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-status: acquired
+x-acquired-by: snowflake
+x-acquired-date: '2023-02-10'
+x-operating: false
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Ai Infrastructure
+- Differential Privacy
+- Data Privacy
+- Machine Learning
+- Data Clean Rooms
+- Privacy Enhancing Technologies
+- Acquired
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -25,3 +60,32 @@ maintainers:
 common:
 - type: Website
   url: https://leapyear.io/
+- type: Documentation
+  url: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/
+- type: APIReference
+  url: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/api.html
+- type: GettingStarted
+  url: https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/tutorial.html
+- type: Packages
+  url: packages/leapyear-technologies-packages.yml
+- type: SDKs
+  url: packages/leapyear-technologies-packages.yml
+- type: Authentication
+  url: authentication/leapyear-technologies-authentication.yml
+- type: ErrorCatalog
+  url: errors/leapyear-technologies-error-codes.yml
+- type: Conventions
+  url: conventions/leapyear-technologies-conventions.yml
+- type: Lifecycle
+  url: lifecycle/leapyear-technologies-lifecycle.yml
+- type: DomainSecurity
+  url: security/leapyear-technologies-domain-security.yml
+- type: LLMsTxt
+  url: llms/leapyear-technologies-llms.txt
+- type: Acquisition
+  url: https://www.snowflake.com/en/blog/snowflake-to-acquire-leapyear/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
