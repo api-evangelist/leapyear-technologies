@@ -64,6 +64,48 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-LeapYear Technologies is a company surfaced as a portfolio company of bain-capital-ventures and added to the API Evangelist network as a stub for enrichment. Sector: ai-infrastructure. This profile is a lead awaiting the enrichment pipeline.
+> **Acquired or rebranded.** This company was acquired, merged or renamed. Its API, if it still exists, is offered under another name. This profile is kept as a historical record and is not maintained or rated.
 
-Backed by: bain-capital-ventures — https://leapyear.io/
+LeapYear Technologies built an enterprise platform for differentially private analytics and machine learning, letting organizations compute over highly sensitive data and share it across internal silos and external partners with mathematically proven privacy guarantees. LeapYear Core was licensed, self-hosted software rather than a public multi-tenant API: customers ran their own server and reached it through a first-party Python client, with every computation drawing down a quantified privacy exposure budget enforced by the server. Snowflake announced its intent to acquire LeapYear on 2023-02-07 and closed on 2023-02-10 for USD 62.0 million in cash, primarily for talent and developed technology, folding the differential privacy capability into its Global Data Clean Room offering. The company no longer operates independently, leapyear.io is now a Snowflake-controlled redirect, and the only surviving first-party documentation is the Python client API reference on its readthedocs host.
+
+**Areas:** Company · AI Infrastructure · Differential Privacy · Privacy · Machine Learning · Data Clean Rooms · Privacy Enhancing Technologies · Acquired
+
+## LeapYear Technologies on APIs.io (historical record)
+
+Everything profiled for LeapYear Technologies is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/leapyear-technologies/](https://apis.io/providers/leapyear-technologies/)** — or go straight to one of the APIs or properties below.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Leapyear Technologies Authentication](https://apis.io/security/leapyear-technologies/leapyear-technologies-authentication/)
+- [Leapyear Technologies Domain Security](https://apis.io/security/leapyear-technologies/leapyear-technologies-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://leapyear.io/)
+- [Documentation](https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/)
+- [Getting started](https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/tutorial.html)
+- [API reference](https://leapyear-python-docs.readthedocs-hosted.com/en/4.1.1/api.html)
+
+## API Evangelist rating
+
+**Not rated** — this company is recorded as acquired or rebranded, so no score is published. If it is in fact operating, say so on this repository and it will be re-profiled.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for LeapYear Technologies: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/leapyear-technologies/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
